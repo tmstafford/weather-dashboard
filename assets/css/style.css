@@ -15,4 +15,11 @@ body {
 }
 .cityTitle {
     padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
 }
+.cityTitle h4 {
+    padding-left: 15px;
+    margin-top: 5px;
+}
+

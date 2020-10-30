@@ -1,12 +1,15 @@
 let apiKey = "d91f911bcf2c0f925fb6535547a5ddc9";
 
 let displayWeatherEl = document.querySelector("#currentWeather");
-let cityTitleEl = document.querySelector("#cityTitle");
+let cityTitleEl = document.querySelector("#cityTitleName");
+let currentDateEl = document.querySelector("#currentDate");
+let weatherIconEl = document.querySelector("#icon");
 let temperatureEl = document.querySelector("#temperature");
 let humidityEl = document.querySelector("#humidity");
 let windSpeedEl = document.querySelector("#windSpeed");
 let UVIndexEl = document.querySelector("#uvIndex");
 
+let todayDate = moment().format('MM/DD/YYYY');
 
 let getCurrentWeather = function(cityName) {
     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=imperial";
@@ -17,7 +20,14 @@ let getCurrentWeather = function(cityName) {
             console.log(apiUrl);
             console.log(data.main.temp);
             
+            displayWeatherEl.classList = "currentWeather";
             cityTitleEl.textContent = cityName;
+            currentDateEl.textContent = "(" + todayDate + ")";
+
+            let getIcon = data.weather[0].icon;
+            console.log(getIcon);
+            let iconUrl = "http://openweathermap.org/img/wn/" + getIcon + ".png";
+            weatherIconEl.setAttribute("src", iconUrl);
 
             let currentTemp = data.main.temp;
             temperatureEl.textContent = "Temperature: " + currentTemp + " °F";
