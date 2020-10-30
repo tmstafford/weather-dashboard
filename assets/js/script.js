@@ -55,7 +55,7 @@ let getForecast = function(cityName) {
     .then(function(response) {
         response.json().then(function(data) {
             let showForecast = document.createElement("h2");
-            showForecast.textContent = "5-Day Forecast";
+            showForecast.textContent = "5-Day Forecast:";
             showForecastEl.appendChild(showForecast);
             
             for (i=0; i < data.list.length; i++) {
@@ -64,7 +64,7 @@ let getForecast = function(cityName) {
                     console.log(data.list[i]);
 
                     let cardDiv = document.createElement("div");
-                    cardDiv.classList = "card bg-primary col-md-2";
+                    cardDiv.classList = "card bg-primary col-md-2 col-sm-12";
                     forecastEl.appendChild(cardDiv);
                     let cardBody = document.createElement("div");
                     cardBody.setAttribute("id", "cardBody");
@@ -81,7 +81,7 @@ let getForecast = function(cityName) {
 
                     let forecastDate = document.createElement("h5");
                     forecastDate.classList = "card-title";
-                    forecastDate.textContent = "(" + month + "/" + day + "/" + year + ")";
+                    forecastDate.textContent = month + "/" + day + "/" + year;
                     cardBody.appendChild(forecastDate);
 
                     let getForecastIcon = data.list[i].weather[0].icon;

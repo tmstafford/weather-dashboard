@@ -4,9 +4,9 @@
 body {
     font-family: "Source Sans Pro", sans-serif;
 }
-.my-header {
-    background-color: black;
-    color: white;
+.my-h1 {
+    font-size: 35px;
+    font-weight: bold;
 }
 .currentWeather {
     border: 1px solid #a9a9a9;
@@ -17,18 +17,20 @@ body {
     padding-bottom: 10px;
     display: flex;
     flex-direction: row;
+    margin-top: 15px;
 }
 .cityTitle h4 {
     padding-left: 15px;
     margin-top: 5px;
 }
+
 .row {
-    margin-top: 30px;
     margin-left: 0;
     justify-content: space-between;
 }
 .card {
     color: white;
+    align-items: center;
 }
 #showForecast {
     margin-top: 3%;
