@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+.my-header {
+    background-color: black;
+    color: white;
+}
+.currentWeather {
+    border: 1px solid #a9a9a9;
+    margin-top: 15px;
+    padding: 15px;
+}
+.cityTitle {
+    padding-bottom: 10px;
+}
