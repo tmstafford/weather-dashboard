@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+.my-h1 {
+    font-size: 35px;
+    font-weight: bold;
+}
+.currentWeather {
+    border: 1px solid #a9a9a9;
+    margin-top: 15px;
+    padding: 15px;
+}
+.cityTitle {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+.cityTitle h4 {
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.row {
+    margin-left: 0;
+    justify-content: space-between;
+}
+.card {
+    color: white;
+    align-items: center;
+}
+#showForecast {
+    margin-top: 3%;
+}
+.card-text {
+    width: 120px;
+}
+
+/* UV Index and Colors */
+.uvSpan {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+.low {
+    background-color: #008000;
+    color: white;
+}
+.moderate {
+    background-color: #FFFF00;
+}
+.high {
+    background-color: #FFA500;
+}
+.severe {
+    background-color: #FF0000;
+    color: white;
+}
