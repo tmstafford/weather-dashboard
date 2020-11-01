@@ -35,3 +35,23 @@ body {
 #showForecast {
     margin-top: 3%;
 }
+
+/* UV Index and Colors */
+.uvSpan {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+.low {
+    background-color: #008000;
+    color: white;
+}
+.moderate {
+    background-color: #FFFF00;
+}
+.high {
+    background-color: #FFA500;
+}
+.severe {
+    background-color: #FF0000;
+    color: white;
+}

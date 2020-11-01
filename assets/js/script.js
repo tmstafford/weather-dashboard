@@ -39,7 +39,20 @@ let getCurrentWeather = function(cityName) {
             fetch(uvUrl).then(function(response) {
                 response.json().then(function(data) {
                     let currentUV = data.value;
-                    UVIndexEl.textContent = "UV Index: " + currentUV;
+                    let uvSpan = document.createElement("span");
+                    uvSpan.textContent = currentUV;
+
+                    if (currentUV < 3) {
+                        uvSpan.classList = "low uvSpan";
+                    } else if (currentUV < 6) {
+                         uvSpan.classList = "moderate uvSpan";
+                    } else if (currentUV < 8) {
+                        uvSpan.classList = "high uvSpan";
+                    } else if (currentUV < 11) {
+                        uvSpan.classList = "severe uvSpan";
+                    }
+                    UVIndexEl.textContent = "UV Index: ";
+                    UVIndexEl.appendChild(uvSpan);
                 });
             });
         });
@@ -162,5 +175,15 @@ let cityButtonHandler = function(event) {
     getForecast(cityClick);
 };
 
+let clearButtonEl = document.querySelector("#clear");
+
+let clearSearchHistory = function(event) {
+    event.preventDefault();
+    cityHistory = [];
+    localStorage.setItem("previousSearch", JSON.stringify(cityHistory));
+    displaySearchHistory();
+};
+
 submitBtnEl.addEventListener("click", formSubmitHandler);
 previousSearchEl.addEventListener("click", cityButtonHandler);
+clearButtonEl.addEventListener("click", clearSearchHistory);
