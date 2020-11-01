@@ -25,7 +25,7 @@ let getCurrentWeather = function(cityName) {
                 currentDateEl.textContent = "(" + todayDate + ")";
                 // get icon img from data 
                 let getIcon = data.weather[0].icon;
-                let iconUrl = "http://openweathermap.org/img/wn/" + getIcon + ".png";
+                let iconUrl = "https://openweathermap.org/img/wn/" + getIcon + ".png";
                 weatherIconEl.setAttribute("src", iconUrl);
                 weatherIconEl.setAttribute("alt", data.weather[0].description);
 
@@ -39,7 +39,7 @@ let getCurrentWeather = function(cityName) {
                 // fetch api for UV index
                 let latitude = data.coord.lat;
                 let longitude = data.coord.lon;
-                let uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
+                let uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
                 fetch(uvUrl).then(function(response) {
                     response.json().then(function(data) {
                         let currentUV = data.value;
@@ -77,7 +77,7 @@ let forecastEl = document.querySelector("#fiveDayForecast");
 
 // fetch 5 day forecast and display on page for same desired city 
 let getForecast = function(cityName) {
-    let forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey + "&units=imperial";
+    let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey + "&units=imperial";
     fetch(forecastUrl)
     .then(function(response) {
         if (response.ok) {
@@ -117,7 +117,7 @@ let getForecast = function(cityName) {
                         cardBody.appendChild(forecastDate);
                         // get icon from data 
                         let getForecastIcon = data.list[i].weather[0].icon;
-                        let getForecastUrl = "http://openweathermap.org/img/wn/" + getForecastIcon + ".png";
+                        let getForecastUrl = "https://openweathermap.org/img/wn/" + getForecastIcon + ".png";
                         let forecastIcon = document.createElement("img");
                         forecastIcon.setAttribute("src", getForecastUrl);
                         forecastIcon.setAttribute("alt", data.list[i].weather[0].description);
