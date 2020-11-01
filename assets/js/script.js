@@ -120,9 +120,17 @@ let cityHistory = JSON.parse(localStorage.getItem("previousSearch")) || [];
 let formSubmitHandler = function(event) {
     event.preventDefault();
     let city = searchCityEl.value.trim();
-    cityHistory.push(city);
-    localStorage.setItem("previousSearch", JSON.stringify(cityHistory));
-    console.log(cityHistory);
+    if (!cityHistory.includes(city)) {
+        cityHistory.push(city);
+        localStorage.setItem("previousSearch", JSON.stringify(cityHistory));
+        console.log(cityHistory);
+    }
+    if (cityHistory.indexOf(city) != -1) {
+        cityHistory.splice(cityHistory.indexOf(city), 1)
+    }
+    console.log(cityHistory.indexOf(city));
+    cityHistory.unshift(city);
+
     if (city) {
         getCurrentWeather(city);
         getForecast(city);
@@ -135,6 +143,7 @@ let formSubmitHandler = function(event) {
 let displaySearchHistory = function() {
     previousSearchEl.textContent = "";
 
+
     for (let i = 0; i < cityHistory.length; i++) {
         let cityBtnEl = document.createElement("button");
         cityBtnEl.setAttribute("type", "button");
@@ -143,6 +152,7 @@ let displaySearchHistory = function() {
         cityBtnEl.textContent = cityHistory[i];
         previousSearchEl.appendChild(cityBtnEl);
     }
+    console.log(cityHistory);
 };
 
 let cityButtonHandler = function(event) {
