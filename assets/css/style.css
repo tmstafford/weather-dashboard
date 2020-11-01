@@ -35,6 +35,9 @@ body {
 #showForecast {
     margin-top: 3%;
 }
+.card-text {
+    width: 120px;
+}
 
 /* UV Index and Colors */
 .uvSpan {
