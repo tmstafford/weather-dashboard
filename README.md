@@ -12,6 +12,7 @@
 * JavaScript
 
 ## Website 
+https://tmstafford.github.io/weather-dashboard/
 
 ## Preview
 <img width="648" alt="Screen Shot 2020-11-01 at 2 20 38 PM" src="https://user-images.githubusercontent.com/70179648/97813497-470d1a80-1c4e-11eb-9f1c-8692a33cefba.png">
