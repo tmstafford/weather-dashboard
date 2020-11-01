@@ -46,6 +46,7 @@ let getCurrentWeather = function(cityName) {
     });
 };
 
+let forecastWeatherEl = document.querySelector("#forecastWeather");
 let showForecastEl = document.querySelector("#showForecast");
 let forecastEl = document.querySelector("#fiveDayForecast");
 
@@ -54,10 +55,14 @@ let getForecast = function(cityName) {
     fetch(forecastUrl)
     .then(function(response) {
         response.json().then(function(data) {
+
+            showForecastEl.innerHTML = "";
+            forecastEl.innerHTML = "";
+
             let showForecast = document.createElement("h2");
             showForecast.textContent = "5-Day Forecast:";
             showForecastEl.appendChild(showForecast);
-            
+
             for (i=0; i < data.list.length; i++) {
 
                 if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
@@ -109,15 +114,43 @@ let getForecast = function(cityName) {
 
 let searchCityEl = document.querySelector("#cityInput");
 let submitBtnEl = document.querySelector("#submitCity");
+let previousSearchEl = document.querySelector("#previousCity");
+let cityHistory = JSON.parse(localStorage.getItem("previousSearch")) || [];
 
 let formSubmitHandler = function(event) {
     event.preventDefault();
     let city = searchCityEl.value.trim();
+    cityHistory.push(city);
+    localStorage.setItem("previousSearch", JSON.stringify(cityHistory));
+    console.log(cityHistory);
     if (city) {
         getCurrentWeather(city);
         getForecast(city);
+        displaySearchHistory(cityHistory);
         searchCityEl.value = "";
     }
 };
 
+// function for getting previous searches and displaying as buttons 
+let displaySearchHistory = function() {
+    previousSearchEl.textContent = "";
+
+    for (let i = 0; i < cityHistory.length; i++) {
+        let cityBtnEl = document.createElement("button");
+        cityBtnEl.setAttribute("type", "button");
+        cityBtnEl.classList = "btn btn-outline-secondary btn-block";
+        cityBtnEl.setAttribute("value", cityHistory[i]);
+        cityBtnEl.textContent = cityHistory[i];
+        previousSearchEl.appendChild(cityBtnEl);
+    }
+};
+
+let cityButtonHandler = function(event) {
+    let cityClick = event.target.value;
+    console.log(cityClick);
+    getCurrentWeather(cityClick);
+    getForecast(cityClick);
+};
+
 submitBtnEl.addEventListener("click", formSubmitHandler);
+previousSearchEl.addEventListener("click", cityButtonHandler);
